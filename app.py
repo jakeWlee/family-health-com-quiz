@@ -9,6 +9,28 @@ Answer the following 10 questions to discover your primary 'Coping Persona.'
 There are no wrong answers—just different ways of processing the world.
 """)
 
+# --- HOMEY THEME (Minimal CSS) ---
+# This small block changes the background to a warm cream 
+# and the text to a softer dark brown/grey.
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #FFFDF5; /* Warm Cream Background */
+    }
+    h1, h2, h3, p, div, label, span {
+        color: #4E342E !important; /* Dark Coffee Text */
+    }
+    div.stButton > button {
+        background-color: #8D6E63; /* Earthy Brown Button */
+        color: white !important;
+        border-radius: 8px;
+    }
+    div.stButton > button:hover {
+        background-color: #6D4C41;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.markdown("---")
 
 # --- DATA: QUESTIONS & ANSWERS ---
