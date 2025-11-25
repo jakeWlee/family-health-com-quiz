@@ -149,69 +149,50 @@ st.markdown("---")
 # --- CALCULATE & SHOW RESULTS ---
 if st.button("Get Your Result"):
     
-    # 1. Tally the scores
+    # 1. Calculate Scores
     scores = {
-        "Pragmatic Strategist": 0,
-        "Expressive Connector": 0,
-        "Introspective Observer": 0,
+        "Pragmatic Strategist": 0, 
+        "Expressive Connector": 0, 
+        "Introspective Observer": 0, 
         "Active Distractor": 0
     }
-
-    for answer_type in user_answers.values():
-        scores[answer_type] += 1
-
-    # 2. Find the winner
-    # (This logic picks the highest score. If there is a tie, it picks the first one encountered)
-    winner = max(scores, key=scores.get)
     
-    # 3. Display the Result
-    st.success(f"Your dominant style is: **{winner}**")
+    for answer in user_answers.values():
+        scores[answer] += 1
     
-    # 4. Custom Descriptions
-    if winner == "Pragmatic Strategist":
-        st.header("🔧 The Pragmatic Strategist")
-        st.write("""
-        **"Let's fix this."**
-        You view mental health as a puzzle to be solved. You value logic, routine, and action plans. 
-        When things get tough, you research solutions, make to-do lists, and focus on 'doing' rather than just 'feeling.'
+    # 2. Find the Highest Score
+    max_score = max(scores.values())
+    
+    # 3. Find ALL categories that have that score (Handles Ties)
+    winners = [cat for cat, score in scores.items() if score == max_score]
+    
+    # 4. Display Logic
+    if len(winners) == 1:
+        st.header(f"You are: {winners[0]}")
+    else:
+        st.header(f"You are a Mix! ⚖️")
+        st.write(f"You have a unique blend of **{len(winners)} styles**.")
+        st.write("This means you are versatile and switch strategies depending on the situation.")
+        st.markdown("---")
+
+    # 5. Loop through winners and show the cards
+    for winner in winners:
         
-        **Your Strength:** Resilience and high-functioning capability during crises.
-        **Your Challenge:** You risk intellectualizing your feelings rather than processing them, which can lead to burnout.
-        """)
-        
-    elif winner == "Expressive Connector":
-        st.header("🤝 The Expressive Connector")
-        st.write("""
-        **"I need to talk about this."**
-        You process emotions through connection. You prioritize vulnerability and feel safest when you can share your burden with others.
-        You are often the person your friends turn to because you are an excellent listener.
-        
-        **Your Strength:** You de-stigmatize emotions and build strong support networks.
-        
-        **Your Challenge:** You can become dependent on external validation to feel better.
-        """)
-        
-    elif winner == "Introspective Observer":
-        st.header("🧘 The Introspective Observer")
-        st.write("""
-        **"I need some time alone."**
-        You process things internally. You value privacy, solitude, and deep reflection. 
-        You don't run from your feelings, but you prefer to understand them fully in private before sharing them with the world.
-        
-        **Your Strength:** Deep self-awareness and the ability to self-soothe.
-        **Your Challenge:** You risk isolating yourself; people may assume you are fine when you are actually struggling.
-        """)
-        
-    elif winner == "Active Distractor":
-        st.header("🚀 The Active Distractor")
-        st.write("""
-        **"Keep moving forward."**
-        You deal with difficult emotions by staying in motion. Whether it's work, hobbies, or social events, you prefer to keep busy.
-        You are often high-energy and productive, using activity to keep anxiety at bay.
-        
-        **Your Strength:** You are great at compartmentalizing and getting things done even when life is hard.
-        **Your Challenge:** If you never slow down to feel, the emotions may eventually catch up to you in a crash.
-        """)
+        if winner == "Pragmatic Strategist":
+            st.info("💡 **The Pragmatic Strategist**")
+            st.write("You treat feelings like puzzles to be solved. You love logic, routine, and taking action. You are the rock in a crisis.")
+
+        elif winner == "Expressive Connector":
+            st.error("💖 **The Expressive Connector**") 
+            st.write("You process by talking and connecting. You wear your heart on your sleeve. Your superpower is vulnerability.")
+
+        elif winner == "Introspective Observer":
+            st.success("🌿 **The Introspective Observer**") 
+            st.write("You process internally. You value privacy, quiet, and deep reflection. You have great self-awareness.")
+
+        elif winner == "Active Distractor":
+            st.warning("⚡ **The Active Distractor**") 
+            st.write("You cope by moving. Whether it's work, hobbies, or socializing, you keep busy to keep anxiety away.")
 
     # Optional: Show the breakdown
     with st.expander("See your score breakdown"):
