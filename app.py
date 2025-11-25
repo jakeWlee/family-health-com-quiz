@@ -186,7 +186,7 @@ if st.button("Get Your Result"):
         You process emotions through connection. You prioritize vulnerability and feel safest when you can share your burden with others.
         You are often the person your friends turn to because you are an excellent listener.
         
-        **Your Strength:** You de-stigmatize emotions and build strong support networks.
+        **Your Strength:** You de-stigmatize emotions and build strong support networks.\n
         **Your Challenge:** You can become dependent on external validation to feel better.
         """)
         
