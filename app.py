@@ -180,19 +180,51 @@ if st.button("Get Your Result"):
         
         if winner == "Pragmatic Strategist":
             st.info("💡 **The Pragmatic Strategist**")
-            st.write("You treat feelings like puzzles to be solved. You love logic, routine, and taking action. You are the rock in a crisis.")
+            st.write("""
+                **"Let's fix this."**
+                You view mental health as a puzzle to be solved. You value logic, routine, and planning. 
+                When things get tough, you research solutions, make to-do lists, and focus on getting better rather than feeling.
+        
+                **Your Strength:** Resilience and high-functioning capability during crises.
+                
+                **Your Challenge:** You risk over-intellectualizing your feelings rather than processing them, which can lead to burnout.
+            """)
 
         elif winner == "Expressive Connector":
             st.error("💖 **The Expressive Connector**") 
-            st.write("You process by talking and connecting. You wear your heart on your sleeve. Your superpower is vulnerability.")
+            st.write("""
+                **"I need to talk about this."**/n\n
+                You process emotions through connection. You prioritize vulnerability and feel safest when you can share your burden with others.
+                You are often the person your friends turn to because you are an excellent listener.
+        
+                **Your Strength:** You de-stigmatize emotions and build strong support networks.
+                
+                **Your Challenge:** You risk becoming dependent on external validation to feel better.
+            """)
 
         elif winner == "Introspective Observer":
             st.success("🌿 **The Introspective Observer**") 
-            st.write("You process internally. You value privacy, quiet, and deep reflection. You have great self-awareness.")
+            st.write("""
+                **"I need some time alone."**
+                You process things internally. You value privacy, solitude, and deep reflection. 
+                You don't run from your feelings, but you prefer to understand them fully in private before sharing them with the world.
+        
+                **Your Strength:** You have deep self-awareness and the ability to ground yourself.
+                
+                **Your Challenge:** You risk isolating yourself. People may assume you are fine when you are actually struggling.
+            """)
 
         elif winner == "Active Distractor":
             st.warning("⚡ **The Active Distractor**") 
-            st.write("You cope by moving. Whether it's work, hobbies, or socializing, you keep busy to keep anxiety away.")
+            st.write("""
+                **"Keep moving forward."**
+                You deal with difficult emotions by staying in motion. Whether it's work, hobbies, or social events, you prefer to keep busy.
+                You are often high-energy and productive, using activity to keep anxiety at bay.
+        
+                **Your Strength:** You are great at compartmentalizing and getting things done even when life is hard.
+        
+                **Your Challenge:** You risk bottling up a lot of feelings, which can lead to emotional outbursts or burnout.
+            """)
 
     # Optional: Show the breakdown
     with st.expander("See your score breakdown"):
