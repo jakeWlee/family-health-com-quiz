@@ -223,7 +223,7 @@ if st.button("Get Your Result"):
                 **"Keep moving forward."**
                 
                 You deal with difficult emotions by staying in motion. Whether it's work, hobbies, or social events, you prefer to keep busy.
-                You are often high-energy and productive, using activity to keep anxiety at bay.
+                You are motivated and productive, using activity to manage stress.
         
                 **Your Strength:** You are great at compartmentalizing and getting things done even when life is hard.
         
