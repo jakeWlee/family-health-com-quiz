@@ -182,6 +182,7 @@ if st.button("Get Your Result"):
             st.info("💡 **The Pragmatic Strategist**")
             st.write("""
                 **"Let's fix this."**
+                
                 You view mental health as a puzzle to be solved. You value logic, routine, and planning. 
                 When things get tough, you research solutions, make to-do lists, and focus on getting better rather than feeling.
         
@@ -193,7 +194,8 @@ if st.button("Get Your Result"):
         elif winner == "Expressive Connector":
             st.error("💖 **The Expressive Connector**") 
             st.write("""
-                **"I need to talk about this."**/n\n
+                **"I need to talk about this."**
+                
                 You process emotions through connection. You prioritize vulnerability and feel safest when you can share your burden with others.
                 You are often the person your friends turn to because you are an excellent listener.
         
@@ -206,6 +208,7 @@ if st.button("Get Your Result"):
             st.success("🌿 **The Introspective Observer**") 
             st.write("""
                 **"I need some time alone."**
+                
                 You process things internally. You value privacy, solitude, and deep reflection. 
                 You don't run from your feelings, but you prefer to understand them fully in private before sharing them with the world.
         
@@ -218,6 +221,7 @@ if st.button("Get Your Result"):
             st.warning("⚡ **The Active Distractor**") 
             st.write("""
                 **"Keep moving forward."**
+                
                 You deal with difficult emotions by staying in motion. Whether it's work, hobbies, or social events, you prefer to keep busy.
                 You are often high-energy and productive, using activity to keep anxiety at bay.
         
