@@ -1,17 +1,16 @@
 import streamlit as st
 
 # --- APP CONFIGURATION ---
-st.set_page_config(page_title="Coping Style Quiz", page_icon="🧠")
+st.set_page_config(page_title="Family Narrative Quiz", page_icon="🧬")
 
-st.title("🧠 Mental Health Coping Style Quiz")
+st.title("🧬 What Is Your 'Family Narrative' Style?")
 st.write("""
-Answer the following 10 questions to discover your primary 'Coping Persona.' 
-There are no wrong answers—just different ways of processing the world.
+Based on the research paper *"Sense-making, Socialization, and Stigma,"* this quiz analyzes 
+how your family talked (or didn't talk) about mental health, and what role you play today 
+as a result of those stories.
 """)
 
 # --- HOMEY THEME (Minimal CSS) ---
-# This small block changes the background to a warm cream 
-# and the text to a softer dark brown/grey.
 st.markdown("""
     <style>
     .stApp {
@@ -34,97 +33,65 @@ st.markdown("""
 st.markdown("---")
 
 # --- DATA: QUESTIONS & ANSWERS ---
-# Each question has a 'text' and a list of 'options'.
-# Each option is a dictionary with the 'answer' text and the assigned 'type'.
+# Mapped based on the academic themes:
+# A -> Caution/Vigilant Historian
+# B -> Struggle/Compassionate Contextualizer
+# C -> Silence/Cycle Breaker
+# D -> Awareness/Genetic Detective
+
 quiz_data = [
     {
-        "question": "1. Something upsetting just happened. What’s your immediate instinct?",
+        "question": "1. Picture Thanksgiving dinner. Your Aunt brings up a cousin who has been 'acting out.' How does your mom respond?",
         "options": [
-            {"text": "Put on headphones, start working, or find something to take your mind off it.", "type": "Active Distractor"},
-            {"text": "Call a friend or partner immediately to vent and let the feelings out.", "type": "Expressive Connector"},
-            {"text": "Analyze the situation to find the root cause and fix it.", "type": "Pragmatic Strategist"},
-            {"text": "Retreat to a quiet space to think through what happened alone.", "type": "Introspective Observer"},
+            {"text": "She lowers her voice: 'He’s going off the rails just like your grandfather. Stay away from that chaos.'", "type": "Vigilant Historian"},
+            {"text": "She sighs: 'He’s been under so much pressure at work and went through that bad breakup. It’s a lot.'", "type": "Compassionate Contextualizer"},
+            {"text": "She changes the subject immediately. We don't talk about 'issues' at the dinner table.", "type": "Cycle Breaker"},
+            {"text": "She uses it as a teaching moment: 'This is why we all need to take care of our health. Genetics are real.'", "type": "Genetic Detective"},
         ]
     },
     {
-        "question": "2. A friend comes to you in tears. How do you react?",
+        "question": "2. When your parents told you stories about family members with mental illness, what was the 'vibe'?",
         "options": [
-            {"text": "You listen quietly and offer a calm presence, but don't say much.", "type": "Introspective Observer"},
-            {"text": "You listen, but your mind goes straight to offering advice or solutions.", "type": "Pragmatic Strategist"},
-            {"text": "You try to cheer them up with a joke or suggest doing an activity to distract them.", "type": "Active Distractor"},
-            {"text": "You empathize deeply, hug them, and validate their pain.", "type": "Expressive Connector"},
+            {"text": "The Warning: It was a scary cautionary tale. A 'don't let this happen to you' speech.", "type": "Vigilant Historian"},
+            {"text": "The Struggle: It was a story about hardship—like losing a job or a loved one—that triggered their illness.", "type": "Compassionate Contextualizer"},
+            {"text": "The Mystery: I only heard bits and pieces. I had to play detective to figure out why Uncle Bob disappeared.", "type": "Cycle Breaker"},
+            {"text": "The Biology Class: It was very factual. 'We have high anxiety in our DNA, so watch out for symptoms.'", "type": "Genetic Detective"},
         ]
     },
     {
-        "question": "3. You’re feeling anxious before a big event. What do you do?",
+        "question": "3. The study discusses 'External Attributions' (blaming the situation) vs. 'Internal Attributions' (blaming the person). How does your parent explain their own bad days?",
         "options": [
-            {"text": "Check the logistics, make a checklist, and prepare so nothing goes wrong.", "type": "Pragmatic Strategist"},
-            {"text": "Scroll social media or keep yourself incredibly busy until the event starts.", "type": "Active Distractor"},
-            {"text": "Talk to someone about how nervous you are to feel less alone.", "type": "Expressive Connector"},
-            {"text": "Find a corner to meditate, breathe, or visualize the outcome privately.", "type": "Introspective Observer"},
+            {"text": "'I'm just stressed because of *you kids* and work.' (Blaming the stressor)", "type": "Vigilant Historian"},
+            {"text": "'I'm feeling overwhelmed because of that thing that happened years ago, so I need a break.' (Contextualizing)", "type": "Compassionate Contextualizer"},
+            {"text": "They don't explain. They just lock the bedroom door.", "type": "Cycle Breaker"},
+            {"text": "'My brain chemistry is off today, so I need to manage my meds/routine.' (Blaming the illness)", "type": "Genetic Detective"},
         ]
     },
     {
-        "question": "4. You’re arguing with a partner or family member. What is your style?",
+        "question": "4. How did hearing (or not hearing) these family stories make you feel about your *own* mental health?",
         "options": [
-            {"text": "You express exactly how their actions made you feel emotionally.", "type": "Expressive Connector"},
-            {"text": "You shut down and go silent; you need to process your thoughts before speaking.", "type": "Introspective Observer"},
-            {"text": "You try to change the subject or walk away to avoid the tension.", "type": "Active Distractor"},
-            {"text": "'Let’s stick to the facts.' You want to solve the disagreement logically.", "type": "Pragmatic Strategist"},
+            {"text": "Terrified. I feel like I'm walking on eggshells waiting to 'turn into' them.", "type": "Vigilant Historian"},
+            {"text": "Empathetic. I realized even my parents are just people trying to figure it out.", "type": "Compassionate Contextualizer"},
+            {"text": "Confused/Curious. I had to go to college or the internet to actually learn what mental illness is.", "type": "Cycle Breaker"},
+            {"text": "Prepared. I know the signs and symptoms to look for in myself.", "type": "Genetic Detective"},
         ]
     },
     {
-        "question": "5. Someone you trust asks, 'How are you really doing?'",
+        "question": "5. Who is the primary storyteller (or 'Lynchpin') in your family regarding health?",
         "options": [
-            {"text": "You deflect with humor: 'Living the dream! Anyway, how are you?'", "type": "Active Distractor"},
-            {"text": "You give a status report: 'Stressed, but I'm handling it by doing X and Y.'", "type": "Pragmatic Strategist"},
-            {"text": "You say, 'I'm okay,' because you prefer to keep your inner world private.", "type": "Introspective Observer"},
-            {"text": "You answer honestly and vulnerably, potentially tearing up.", "type": "Expressive Connector"},
+            {"text": "My Mom. She holds all the warnings, secrets, and judgments.", "type": "Vigilant Historian"},
+            {"text": "My Dad (or parent figure). He drops truth bombs about life struggles while we are driving or fishing.", "type": "Compassionate Contextualizer"},
+            {"text": "Me. I’m the one dragging the secrets out of them.", "type": "Cycle Breaker"},
+            {"text": "It's a group effort, usually involving medical terms and factual updates.", "type": "Genetic Detective"},
         ]
     },
     {
-        "question": "6. You find yourself crying or feeling overwhelmed. How do you handle it?",
+        "question": "6. Finally, what is the biggest lesson you took away from your family's 'Narrative Inheritance'?",
         "options": [
-            {"text": "You analyze why you are crying and journal or reflect on the trigger.", "type": "Introspective Observer"},
-            {"text": "You wipe your face immediately and find a task to do so you don't dwell on it.", "type": "Active Distractor"},
-            {"text": "You feel frustrated by the loss of control and try to 'pull yourself together.'", "type": "Pragmatic Strategist"},
-            {"text": "You lean into it—crying is a natural release and you feel better after.", "type": "Expressive Connector"},
-        ]
-    },
-    {
-        "question": "7. You’re stuck in a 'rut' or feeling low. What gets you out of it?",
-        "options": [
-            {"text": "Connection. Spending quality time with people who love you.", "type": "Expressive Connector"},
-            {"text": "Stimulation. Starting a new video game, binge-watching a show, or a night out.", "type": "Active Distractor"},
-            {"text": "Action. Cleaning the house, hitting the gym, or reorganized your calendar.", "type": "Pragmatic Strategist"},
-            {"text": "Solitude. Time alone in nature or a quiet room to recharge your battery.", "type": "Introspective Observer"},
-        ]
-    },
-    {
-        "question": "8. You accomplished something huge! How do you celebrate?",
-        "options": [
-            {"text": "Feel a quiet sense of pride and enjoy a peaceful evening.", "type": "Introspective Observer"},
-            {"text": "Review the success, acknowledge the win, and set the next goal.", "type": "Pragmatic Strategist"},
-            {"text": "Throw a party or call everyone to share the excitement.", "type": "Expressive Connector"},
-            {"text": "Enjoy the adrenaline rush for a moment, then move on to the next thrill.", "type": "Active Distractor"},
-        ]
-    },
-    {
-        "question": "9. What is your biggest 'Red Flag' that your mental health is slipping?",
-        "options": [
-            {"text": "You feel physically exhausted or engage in risky/impulsive behavior.", "type": "Active Distractor"},
-            {"text": "You withdraw completely and stop answering texts or interacting.", "type": "Introspective Observer"},
-            {"text": "You feel needy, over-sensitive, or unable to self-soothe without others.", "type": "Expressive Connector"},
-            {"text": "You become rigid, obsessive about details, or overly controlling.", "type": "Pragmatic Strategist"},
-        ]
-    },
-    {
-        "question": "10. Ideally, how do you view mental health?",
-        "options": [
-            {"text": "It’s about being open, vulnerable, and connected to others.", "type": "Expressive Connector"},
-            {"text": "It’s a deeply personal journey of self-awareness and understanding.", "type": "Introspective Observer"},
-            {"text": "It’s about resilience and pushing forward despite the difficulties.", "type": "Active Distractor"},
-            {"text": "It’s something to be managed and optimized through good habits.", "type": "Pragmatic Strategist"},
+            {"text": "Caution: Mental illness makes people unpredictable, so I need to be careful.", "type": "Vigilant Historian"},
+            {"text": "Context: Bad things happen to good people, and that can trigger mental health struggles.", "type": "Compassionate Contextualizer"},
+            {"text": "Change: We need to stop hiding things. I'm going to talk about this openly.", "type": "Cycle Breaker"},
+            {"text": "Awareness: I have a genetic map of my brain, so I can spot the red flags early.", "type": "Genetic Detective"},
         ]
     }
 ]
@@ -134,12 +101,9 @@ user_answers = {}
 
 for i, q_data in enumerate(quiz_data):
     st.subheader(q_data["question"])
-    # We use just the text for the radio button labels
     options_text = [opt["text"] for opt in q_data["options"]]
     choice = st.radio(f"Select an option for Question {i+1}:", options_text, key=f"q{i}")
     
-    # Map the chosen text back to its type
-    # (We look through the options list to find the type associated with the selected text)
     for opt in q_data["options"]:
         if opt["text"] == choice:
             user_answers[i] = opt["type"]
@@ -151,10 +115,10 @@ if st.button("Get Your Result"):
     
     # 1. Calculate Scores
     scores = {
-        "Pragmatic Strategist": 0, 
-        "Expressive Connector": 0, 
-        "Introspective Observer": 0, 
-        "Active Distractor": 0
+        "Compassionate Contextualizer": 0, 
+        "Vigilant Historian": 0, 
+        "Genetic Detective": 0, 
+        "Cycle Breaker": 0
     }
     
     for answer in user_answers.values():
@@ -172,62 +136,49 @@ if st.button("Get Your Result"):
     else:
         st.header(f"You are a Mix! ⚖️")
         st.write(f"You have a unique blend of **{len(winners)} styles**.")
-        st.write("This means you are versatile and switch strategies depending on the situation.")
         st.markdown("---")
 
     # 5. Loop through winners and show the cards
     for winner in winners:
         
-        if winner == "Pragmatic Strategist":
-            st.info("💡 **The Pragmatic Strategist**")
+        if winner == "Compassionate Contextualizer":
+            st.info("💙 **The Compassionate Contextualizer**")
             st.write("""
-                **"Let's fix this."**
+                **Based on the theme of 'Struggle Narratives.'**
                 
-                You view mental health as a puzzle to be solved. You value logic, routine, and planning. 
-                When things get tough, you research solutions, make to-do lists, and focus on getting better rather than feeling.
-        
-                **Your Strength:** Resilience and high-functioning capability during crises.
+                Your family stories focused on *why* things happened. You didn't just hear that your aunt was 'crazy'; you heard about the grief, the job loss, or the trauma that led to her depression. 
                 
-                **Your Challenge:** You risk over-intellectualizing your feelings rather than processing them, which can lead to burnout.
+                **Your Narrative Legacy:** You learned the lesson of **Understanding**. You don't judge people for their mental health; you look for the context. You are the friend everyone comes to because you actually listen.
             """)
 
-        elif winner == "Expressive Connector":
-            st.error("💖 **The Expressive Connector**") 
+        elif winner == "Vigilant Historian":
+            st.warning("📜 **The Vigilant Historian**") 
             st.write("""
-                **"I need to talk about this."**
+                **Based on the theme of 'Caution Narratives.'**
                 
-                You process emotions through connection. You prioritize vulnerability and feel safest when you can share your burden with others.
-                You are often the person your friends turn to because you are an excellent listener.
-        
-                **Your Strength:** You de-stigmatize emotions and build strong support networks.
+                Your family stories were often cautionary tales. You were told about the 'wild' relative or the 'dangerous' cousin as a warning. 
                 
-                **Your Challenge:** You risk becoming dependent on external validation to feel better.
+                **Your Narrative Legacy:** You learned the lesson of **Caution**. You might harbor a little bit of fear regarding mental health, but you are also hyper-aware of the consequences of untreated illness. You walk the straight and narrow because you know exactly what happens when you don't.
             """)
 
-        elif winner == "Introspective Observer":
-            st.success("🌿 **The Introspective Observer**") 
+        elif winner == "Genetic Detective":
+            st.success("🧬 **The Genetic Detective**") 
             st.write("""
-                **"I need some time alone."**
+                **Based on the lesson of 'MI Awareness.'**
                 
-                You process things internally. You value privacy, solitude, and deep reflection. 
-                You don't run from your feelings, but you prefer to understand them fully in private before sharing them with the world.
-        
-                **Your Strength:** You have deep self-awareness and the ability to ground yourself.
+                Your family didn't shy away from the facts. You learned early on that mental illness runs in the family, just like blue eyes or high blood pressure.
                 
-                **Your Challenge:** You risk isolating yourself. People may assume you are fine when you are actually struggling.
+                **Your Narrative Legacy:** You took the lesson of **Awareness** to heart. You aren't scared—you're prepared. You monitor your own mental health and you’re the first one to tell a friend, "Hey, have you thought about seeing a doctor for that?"
             """)
 
-        elif winner == "Active Distractor":
-            st.warning("⚡ **The Active Distractor**") 
+        elif winner == "Cycle Breaker":
+            st.error("🔄 **The Cycle Breaker**") 
             st.write("""
-                **"Keep moving forward."**
+                **Based on 'Narrative Intervention.'**
                 
-                You deal with difficult emotions by staying in motion. Whether it's work, hobbies, or social events, you prefer to keep busy.
-                You are motivated and productive, using activity to manage stress.
-        
-                **Your Strength:** You are great at compartmentalizing and getting things done even when life is hard.
-        
-                **Your Challenge:** You risk bottling up a lot of feelings, which can lead to emotional outbursts or burnout.
+                Your family might not have had the best communication skills—maybe there was silence, secrecy, or stigma. But you are flipping the script. 
+                
+                **Your Narrative Legacy:** You are taking the old stories of silence and turning them into open conversations. You are becoming the new 'Lynchpin' for your family, ensuring the next generation hears stories that validate their feelings rather than shaming them.
             """)
 
     # Optional: Show the breakdown
