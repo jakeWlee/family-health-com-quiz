@@ -11,22 +11,24 @@ These aren't "good" or "bad"—they are maps of how we make sense of pain.
 **Take this 10-question quiz to find out which narrative you are currently living.**
 """)
 
-# --- STYLING (Academic/Bookish Theme) ---
+# --- HOMEY THEME (Minimal CSS) ---
+# This small block changes the background to a warm cream 
+# and the text to a softer dark brown/grey.
 st.markdown("""
     <style>
     .stApp {
-        background-color: #Fdfbf7; /* Off-white book paper color */
+        background-color: #FFFDF5; /* Warm Cream Background */
     }
     h1, h2, h3, p, div, label, span {
-        color: #2c3e50 !important; /* Dark Ink Blue/Grey */
+        color: #4E342E !important; /* Dark Coffee Text */
     }
     div.stButton > button {
-        background-color: #34495e; /* Navy Blue Button */
+        background-color: #8D6E63; /* Earthy Brown Button */
         color: white !important;
-        border-radius: 5px;
+        border-radius: 8px;
     }
     div.stButton > button:hover {
-        background-color: #2c3e50;
+        background-color: #6D4C41;
     }
     </style>
 """, unsafe_allow_html=True)
