@@ -224,6 +224,8 @@ if st.button("Get My Results"):
     with st.expander("See your score breakdown"):
         st.write(scores)
 
+st.markdown("---")
+
 st.write("""
 Frank, Arthur W. The Wounded Storyteller: Body, Illness, and Ethics. 2nd ed., University of Chicago Press, 2013.
 """)
