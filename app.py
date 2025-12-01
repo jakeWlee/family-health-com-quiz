@@ -6,9 +6,9 @@ st.set_page_config(page_title="The Wounded Storyteller Quiz", page_icon="📖")
 st.title("📖 What Is Your Illness Narrative Style?")
 st.write("""
 Sociologist Arthur Frank (*The Wounded Storyteller*) identified three main ways people tell the story of their health struggles. 
-These aren't "good" or "bad"—they are maps of how we make sense of pain. 
+No narrative is inherently bad. Each one has a purpose and reflects how we make sense of our pain.
 
-**Take this 10-question quiz to find out which narrative you are currently living.**
+**Take this 10-question quiz to find out which narrative resonates with you!**
 """)
 
 # --- HOMEY THEME (Minimal CSS) ---
@@ -138,7 +138,7 @@ for i, q_data in enumerate(quiz_data):
 st.markdown("---")
 
 # --- CALCULATE RESULTS ---
-if st.button("Analyze My Narrative"):
+if st.button("Get My Results"):
     
     scores = {
         "Restitution Narrative": 0, 
@@ -152,7 +152,7 @@ if st.button("Analyze My Narrative"):
     max_score = max(scores.values())
     winners = [cat for cat, score in scores.items() if score == max_score]
     
-    # --- DISPLAY RESULTS ---
+# --- DISPLAY RESULTS ---
     
     if len(winners) > 1:
         st.header("You are between narratives.")
@@ -164,40 +164,66 @@ if st.button("Analyze My Narrative"):
         
         if winner == "Restitution Narrative":
             st.info("🩺 **The Restitution Narrative**")
-            st.write("""
-                **"Yesterday I was healthy, today I am sick, but tomorrow I will be healthy again."**
-                
-                This is the most common narrative in modern culture. It focuses on the **Cure**.
-                
-                *   **The Hero:** Medicine, technology, and your own willpower.
-                *   **The Plot:** You view illness as a temporary interruption. You are focused on 'beating' the sickness and returning to your pre-illness self.
-                *   **The Trap:** If the illness is chronic or doesn't have a cure, this story can become frustrating because the 'happy ending' (total recovery) keeps moving further away.
+            st.markdown("""
+            ### *"Yesterday I was healthy, today I am sick, but tomorrow I will be healthy again."*
+            
+            **What this is:**
+            This is the "medical ideal." It views illness as a temporary enemy to be defeated. Your primary focus is finding the cure, fixing the broken part, and returning to the person you were before this happened.
+            
+            ---
+            
+            #### ⚖️ The Pros & Cons
+            *   **The Strength:** This mindset provides incredible motivation. It fuels compliance with medical treatment, keeps morale high, and works perfectly for temporary illnesses (like a broken leg or the flu).
+            *   **The Shadow Side:** It is fragile. If the illness becomes chronic or a cure isn't possible, this narrative collapses. You may feel like a "failure" because you aren't getting better, leading to denial or deep frustration.
+            
+            #### 🚀 How to Move Forward
+            *   **If you have a treatable condition:** Keep going. This narrative is serving you well.
+            *   **If you have a chronic condition:** Be careful. Trying to force a Restitution story on a permanent reality can lead to burnout. You might benefit from exploring the **Quest Narrative**, where the goal shifts from "cure" to "healing" (finding peace even without a cure).
             """)
             
         elif winner == "Chaos Narrative":
             st.warning("💥 **The Chaos Narrative**")
-            st.write("""
-                **"And then... and then... and then..."**
-                
-                Arthur Frank calls this the 'anti-narrative' because it lacks a clear beginning, middle, and end. It focuses on **Loss of Control**.
-                
-                *   **The Hero:** None. The illness is in control.
-                *   **The Plot:** You feel overwhelmed. The story is hard to tell because new symptoms or problems keep happening before you can process the old ones.
-                *   **The Reality:** This is a very real, very valid place to be during acute trauma or worsening illness. It requires patience and listening from others, not advice.
+            st.markdown("""
+            ### *"And then... and then... and then..."*
+            
+            **What this is:**
+            Arthur Frank calls this the "anti-narrative" because it has no structure. It is the story of being overwhelmed. You feel swept along by the illness, with no control over the plot. This usually happens during acute trauma, new diagnoses, or severe relapses.
+            
+            ---
+            
+            #### ⚖️ The Pros & Cons
+            *   **The Strength:** It is the most honest depiction of suffering. It refuses to sugarcoat the pain or pretend things are okay when they aren't. It demands attention.
+            *   **The Shadow Side:** It is isolating. Because the story is hard to listen to (and has no happy ending yet), friends and family often pull away. It traps you in the immediate moment, making it impossible to imagine a future.
+            
+            #### 🚀 How to Move Forward
+            *   **Acceptance:** Don't force yourself to find a "silver lining" yet. You are in the storm. Survival is enough.
+            *   **Find a Confidant:** You need a listener who won't try to "fix" you, but who can just witness the pain.
+            *   **The Exit:** Chaos is usually a phase. Eventually, as you regain a tiny bit of agency, you will likely move toward a **Restitution** (seeking help) or **Quest** (finding meaning) narrative.
             """)
             
         elif winner == "Quest Narrative":
             st.success("🏔️ **The Quest Narrative**")
-            st.write("""
-                **"I wouldn't have chosen this, but I have changed because of it."**
-                
-                This narrative accepts that suffering is part of the journey. It focuses on **Meaning**.
-                
-                *   **The Hero:** You (The Wounded Storyteller).
-                *   **The Plot:** You aren't necessarily 'cured,' but you are 'healed' in a spiritual or emotional sense. You use your experience to gain insight, advocate for others, or find new purpose.
-                *   **The Power:** This allows you to integrate the illness into your life story rather than just trying to erase it.
+            st.markdown("""
+            ### *"I wouldn't have chosen this, but I have changed because of it."*
+            
+            **What this is:**
+            This narrative accepts that the old version of you is gone. Instead of trying to go back, you use the illness as a catalyst for transformation. You believe that suffering, while terrible, has given you specific insights, empathy, or a new purpose.
+            
+            ---
+            
+            #### ⚖️ The Pros & Cons
+            *   **The Strength:** It grants you agency. Even if you can't control the disease, you control the *meaning* of it. It often leads to community building, advocacy, and deep emotional peace.
+            *   **The Shadow Side:** It can turn into toxic positivity. If forced too early, it can make you feel like you aren't allowed to just be sad or angry. Not every moment needs to be a profound lesson.
+            
+            #### 🚀 How to Move Forward
+            *   **Share your story:** Quest narrators heal by helping others. Consider writing, support groups, or mentoring.
+            *   **Stay Grounded:** Remember that getting "Quest" doesn't mean you are only this narrative. It is okay to have days where you just want to be fixed (**Restitution**) or feel all of your emotions(**Chaos**).
             """)
+
 
     with st.expander("See your score breakdown"):
         st.write(scores)
 
+st.write("""
+Frank, Arthur W. The Wounded Storyteller: Body, Illness, and Ethics. 2nd ed., University of Chicago Press, 2013.
+""")
