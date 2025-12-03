@@ -66,7 +66,7 @@ quiz_data = [
     {
         "question": "4. You’re going through a breakup. How do you view the old you before this event?",
         "options": [
-            {"text": "The 'Old Me' is the goal. I am working every day to be be happy and good again.", "type": "Restitution Narrative"},
+            {"text": "The 'Old Me' is the goal. I am working every day to be happy and good again.", "type": "Restitution Narrative"},
             {"text": "The 'Old Me' is gone. I am grieving them, but I am becoming someone new.", "type": "Quest Narrative"},
             {"text": "The 'Old Me' feels like a dream I can't remember. I am trapped in the 'Bad Me' now.", "type": "Chaos Narrative"},
         ]
